@@ -7,7 +7,9 @@ import { dirname, join } from "node:path";
 const dir = dirname(fileURLToPath(import.meta.url));
 const raw = readFileSync(join(dir, "POST.json"), "utf8");
 const post = JSON.parse(raw);
-const url = post.url;
+// Normalize: a pasted Share link can carry tracking params (?a=...&s=...);
+// the canonical post address is the URL without query or fragment.
+const url = String(post.url).split("?")[0].split("#")[0];
 
 if (typeof url !== "string" || !url.startsWith("https://x.com/") || !url.includes("/status/")) {
   console.error("POST.json url must be an https://x.com/<handle>/status/<id> address");
