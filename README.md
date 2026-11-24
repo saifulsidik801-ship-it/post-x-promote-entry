@@ -6,9 +6,9 @@
 
 Entry for the make.fun competition **Promote make.fun's make-your-own-bounty post on X** (`post-x-promote-make-your-own-bounty-01`, $250, top 50).
 
-The entry is one public X post by @Sidiik666 promoting make.fun's make-your-own-bounty post, with a photo attached, the make.fun link, the @makefunai tag and the entrant's play code. The post's address is named in [POST.json](POST.json):
+The entry is one public X post by @TekiiiMP promoting make.fun's make-your-own-bounty post, with a photo attached, the make.fun link, the @makefunai tag and the entrant's play code. The post's address is named in [POST.json](POST.json):
 
-https://x.com/Sidiik666/status/2125042509751709851
+https://x.com/TekiiiMP/status/2125298161774428626
 
 `main.ts` (Node 22, standard library only, no network) reads `POST.json` beside itself and validates that the address is an `https://x.com/<handle>/status/<id>` URL. Run it from anywhere:
 
