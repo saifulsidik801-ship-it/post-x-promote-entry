@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
@@ -22,7 +22,14 @@ if (!match) {
   process.exit(1);
 }
 
+// Copy POST.json to the output dir (the house reads it from there for the
+// gate). MAKEFUN_OUTPUT_DIR overrides the default /output when set.
+const outDir = process.env.MAKEFUN_OUTPUT_DIR || "/output";
+mkdirSync(outDir, { recursive: true });
+writeFileSync(join(outDir, "POST.json"), raw, "utf8");
+
 console.log("post_url:", url);
 console.log("handle:", match[1]);
 console.log("status_id:", match[2]);
+console.log("copied POST.json to:", join(outDir, "POST.json"));
 console.log("OK");
